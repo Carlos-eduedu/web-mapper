@@ -3,7 +3,7 @@ Este módulo contém a classe Mapper, responsável por mapear páginas web a
 partir de um domínio fornecido.
 
 O mapeamento é realizado de forma recursiva, identificando e seguindo links
-até uma profundidade máxima especificada. 
+até uma profundidade máxima especificada.
 A classe utiliza BeautifulSoup para fazer parsing do conteúdo HTML e Rich
 para logar o progresso das requisições.
 
@@ -31,7 +31,8 @@ console = Console()
 class Mapper:
     """
     Classe responsável por mapear páginas web a partir do domínio fornecido.
-    Pode realizar mapeamento recursivo até uma profundidade máxima especificada.
+    Pode realizar mapeamento recursivo até uma profundidade
+    máxima especificada.
 
     Attributes
     ----------
@@ -172,7 +173,10 @@ class Mapper:
         if parsed_url.netloc != domain_parsed.netloc:
             return False
 
-        if any(parsed_url.path.endswith(ext) for ext in ['.pdf', '.jpg', '.jpeg', '.png', '.gif', '.svg']):
+        if any(parsed_url.path.endswith(ext) for ext in [
+            '.pdf', '.jpg', '.jpeg', '.png', '.gif', '.svg'
+            ]
+        ):
             return False
 
         return True
@@ -208,7 +212,8 @@ class Mapper:
 
         for link in clean_links:
             absolute_url = urljoin(self.domain, link)
-            if self._is_valid_url(absolute_url) and absolute_url not in self.visited:
+            if (self._is_valid_url(absolute_url)
+                and absolute_url not in self.visited):
                 self.all_links.add(absolute_url)
                 self.crawl(absolute_url, depth + 1)
                 self._rate_limit_wait()
