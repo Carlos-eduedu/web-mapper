@@ -7,6 +7,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "3.12.*"
+requests = "^2.32.3"
+beautifulsoup4 = "^4.12.3"
+rich = "^13.9.2"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -17,7 +20,7 @@ taskipy = "^1.13.0"
 
 [tool.pytest.ini_options]
 pythonpath = "."
-addopts = "-p no:warnings"
+addopts = "-p no:warnings --doctest-modules"
 
 [tool.ruff]
 line-length = 79
